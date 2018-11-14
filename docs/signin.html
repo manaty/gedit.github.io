@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/reboot.scss"/>
+    <title>Signin</title>
+    <script src="./lib/GithubContentsApiV3.js"></script>
+    <script src="./lib/auth.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        /* Add padding to containers */
+        .container {
+            padding: 80px 20px 40px 40px;
+        }
+
+        form {
+            margin: 0 auto;
+            border: 3px solid #f1f1f1;
+            box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
+            box-sizing:border-box;
+            width: 390px;
+            padding: 16px;
+        }
+
+        /* Full-width inputs */
+        input[type=text],
+        input[type=password] {
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        .buttonContainer{
+            display: flex;
+            justify-content: center;
+        }
+        /* Set a style for all buttons */
+        button {
+            background-color: rgb(231, 75, 25);
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
+            border-radius: 5px;
+        }
+
+        /* Add a hover effect for buttons */
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Extra style for the cancel button (red) */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        /* Avatar image */
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <form onsubmit="event.preventDefault();signin()">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" id="pos_signin_username" required><br/>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="pos_signin_password" required><br/>
+            <div class="buttonContainer">
+                <button type="submit" id="pos_signin_submit" >SignIn</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function signin() {
+            var username = document.getElementById("pos_signin_username").value;
+            var password = document.getElementById("pos_signin_password").value;
+            if ((!username) || username.length < 4 || (!password) || password.length <= 4) {
+                alert("username or password too short");
+            } else  {
+                Authentication.signin(username,password);
+            }
+        }
+    </script>
+</body>
+
+</html>

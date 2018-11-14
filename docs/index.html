@@ -8,4 +8,11 @@ Index page
 
 <a href="testace.html">Test ACE</a>
 </body>
+<script>
+    if(sessionStorage.getItem("username")){
+        let link = document.createElement("div");
+        link.innerHTML = sessionStorage.getItem("username");
+        document.body.appendChild(link);
+    }
+</script>
 </html>
