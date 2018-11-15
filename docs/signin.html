@@ -4,11 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="./css/reboot.scss"/>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/reboot.scss" />
     <title>Signin</title>
-    <script src="./lib/GithubContentsApiV3.js"></script>
-    <script src="./lib/auth.js"></script>
+
     <style>
         body {
             margin: 0;
@@ -81,33 +80,21 @@
             }
         }
     </style>
-
+    <script src="./signin.js" type="module"></script>
 </head>
 
 <body>
     <div class="container">
-        <form onsubmit="event.preventDefault();signin()">
+        <form id="loginForm">
             <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" id="pos_signin_username" required><br/>
+            <input type="text" placeholder="Enter Username" id="pos_signin_username" required><br />
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="pos_signin_password" required><br/>
+            <input type="password" placeholder="Enter Password" id="pos_signin_password" required><br />
             <div class="buttonContainer">
-                <button type="submit" id="pos_signin_submit" >SignIn</button>
+                <button type="submit" id="pos_signin_submit">SignIn</button>
             </div>
         </form>
     </div>
-
-    <script>
-        function signin() {
-            var username = document.getElementById("pos_signin_username").value;
-            var password = document.getElementById("pos_signin_password").value;
-            if ((!username) || username.length < 4 || (!password) || password.length <= 4) {
-                alert("username or password too short");
-            } else  {
-                Authentication.signin(username,password);
-            }
-        }
-    </script>
 </body>
 
 </html>

@@ -1,4 +1,6 @@
-class Authentication{
+import GithubApi from "./githubContentsApiV3.js";
+
+export default class Authentication {
 
     static signin(username,token){
         sessionStorage.setItem("username",username);
@@ -6,7 +8,7 @@ class Authentication{
         let isAdmin=(token.length==40);
         sessionStorage.setItem("isadmin",false);
         if(isAdmin){
-            let githubApi=GithubContentsApiV3(username,"gedit",username,token);
+            let githubApi=new GithubApi(username,token);
             githubApi.getUserInfo().then(userInfo => {
                 sessionStorage.setItem("isadmin",true);
                 sessionStorage.setItem("username",userInfo.login); 
@@ -30,6 +32,14 @@ class Authentication{
 
     static getToken(){
         return sessionStorage.getItem("token");
+    }
+
+    static getAvatarUrl(){
+        return sessionStorage.getItem("avatar_url");
+    }
+
+    static isLoggedIn(){
+        return !sessionStorage.getItem("username");
     }
 
     static isAdmin(){

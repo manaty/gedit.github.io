@@ -1,8 +1,10 @@
-class GithubContentsApiV3 {
+import githubconf from "./github_config.js";
 
-    constructor(owner, repo, username, password){
-        this.owner=owner;
-        this.repo=repo;
+export default class GithubContentsApiV3 {
+
+    constructor(username, password){
+        this.owner=githubconf.owner;
+        this.repo=githubconf.repo;
         this.username=username;
         this.password=password;
     }
