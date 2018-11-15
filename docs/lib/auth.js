@@ -1,5 +1,6 @@
 import GithubApi from "./GithubContentsApiV3.js";
 
+
 export default class Authentication {
 
     static signin(username,token){
