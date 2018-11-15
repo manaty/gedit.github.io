@@ -24,7 +24,7 @@ export default class GithubContentsApiV3 {
 
     getUserInfo(){
         return new Promise((resolve, reject) => {
-            fetch("https://api.github.com/user/", this.getGetOptions())
+            fetch("https://api.github.com/user", this.getGetOptions())
             .then(response => response.json()).then(resp => {
                     if (!resp.login) {
                         console.log("expected response is not a valid user, resp=" + JSON.stringify(resp));

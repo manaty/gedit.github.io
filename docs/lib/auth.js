@@ -11,6 +11,7 @@ export default class Authentication {
         if(isAdmin){
             let githubApi=new GithubApi(username,token);
             githubApi.getUserInfo().then(userInfo => {
+                console.log(JSON.stringify(userInfo));
                 sessionStorage.setItem("isadmin",true);
                 sessionStorage.setItem("username",userInfo.login); 
                 if(userInfo.avatar_url && userInfo.avatar_url.length>0) {
@@ -40,7 +41,7 @@ export default class Authentication {
     }
 
     static isLoggedIn(){
-        return !sessionStorage.getItem("username");
+        return !!sessionStorage.getItem("username");
     }
 
     static isAdmin(){
