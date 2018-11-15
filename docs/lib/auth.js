@@ -1,4 +1,4 @@
-import GithubApi from "./githubContentsApiV3.js";
+import GithubApi from "./GithubContentsApiV3.js";
 
 export default class Authentication {
 
